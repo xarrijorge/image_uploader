@@ -26,21 +26,20 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/upload-image', async (req: Request, res: Response) => {
-    // let newImage
-    // let uploadPath
+    let newImage
+    let uploadPath
 
-    // if (!req.files) {
-    //     res.send({
-    //         status: false,
-    //         message: 'No file was uploaded',
-    //     })
-    // } else {
-    //     // using the name of the input field to get access the file object
-    //     newImage = req.files.image
-    //     uploadPath = __dirname + './uploads' + newImage.name
-    //     newImage.mv(uploadPath)
-    // }
-    console.log(req.files)
+    if (!req.files) {
+        res.send({
+            status: false,
+            message: 'No file was uploaded',
+        })
+    } else {
+        // using the name of the input field to get access the file object
+        newImage = req.files.image
+        uploadPath = __dirname + './uploads' + newImage.name
+        newImage.mv(uploadPath)
+    }
 })
 
 // start the server
